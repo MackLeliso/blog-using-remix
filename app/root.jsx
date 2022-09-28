@@ -1,10 +1,4 @@
-import {
-  Link,
-  Links,
-  LiveReload,
-  Meta,
-  Outlet,
-} from "@remix-run/react";
+import { Link, Links, LiveReload, Meta, Outlet } from "@remix-run/react";
 import globalStylesUrl from "~/styles/global.css";
 
 export const meta = () => ({
@@ -37,7 +31,6 @@ function Document({ children, title }) {
         <title> {title ? title : "Remix Blog"}</title>
         <Meta />
         <Links />
-        <link rel="stylesheet" href={globalStylesUrl}></link>
       </head>
       <body>
         {children}
