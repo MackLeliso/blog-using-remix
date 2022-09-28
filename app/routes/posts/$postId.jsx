@@ -47,6 +47,9 @@ function Post() {
           <input type="hidden" name="_method" value="delete" />
           <button className="btn btn-delete">Delete</button>
         </form>
+        <Link to="/posts/new" className="btn">
+          Add Post
+        </Link>
       </div>
     </div>
   );
