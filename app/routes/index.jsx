@@ -1,11 +1,11 @@
-import about from './posts'
+import about from "./posts";
 function Home() {
   return (
     <div>
-      Home
+      Well come to remix
       <about />
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;

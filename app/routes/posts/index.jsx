@@ -1,11 +1,13 @@
+import { PrismaClient } from "@prisma/client";
 import { Link, useLoaderData } from "@remix-run/react";
-export const loader = () => {
+const prisma = new PrismaClient();
+
+export const loader = async () => {
   const data = {
-    posts: [
-      { id: 1, title: "Post 1", body: "this is a post" },
-      { id: 2, title: "Post 2", body: "this is a post 2" },
-      { id: 3, title: "Post 3", body: "this is a post 2" },
-    ],
+    posts: await prisma.post.findMany({
+      take: 20,
+      orderBy: {createAt: 'desc'}
+        }),
   };
   return data;
 };
@@ -25,6 +27,7 @@ function PostItems() {
           <li key={post.id}>
             <Link to={post.id}>
               <h3>{post.title}</h3>
+              {new Date(post.createAt).toLocaleDateString()}
             </Link>
           </li>
         ))}

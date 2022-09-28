@@ -1,15 +1,17 @@
 import { redirect } from "@remix-run/node";
 import { Link } from "@remix-run/react";
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
 
 export const action = async ({ request }) => {
-  console.log(123333);
   const form = await request.formData();
   const title = form.get("title");
   const body = form.get("title");
   const filed = {title, body}
+  const post =  await prisma.post.create({data: filed})
 
-// todo - submit to database
-  return redirect('/posts')
+// todo - submit to database 
+  return redirect(`/posts/${post.id}`)
 };
 
 function NewPost() {
