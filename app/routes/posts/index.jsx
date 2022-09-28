@@ -23,14 +23,16 @@ function PostItems() {
         </Link>
       </div>
       <ul className="posts-list">
-        {posts.map((post) => (
+        {posts === null? (posts.map((post) => (
           <li key={post.id}>
             <Link to={post.id}>
               <h3>{post.title}</h3>
               {new Date(post.createAt).toLocaleDateString()}
             </Link>
           </li>
-        ))}
+        ))): (
+            <h3>No recorded data</h3>
+        )}
       </ul>
     </>
   );

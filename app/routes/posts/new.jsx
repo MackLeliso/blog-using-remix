@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 export const action = async ({ request }) => {
   const form = await request.formData();
   const title = form.get("title");
-  const body = form.get("title");
+  const body = form.get("body");
   const filed = {title, body}
   const post =  await prisma.post.create({data: filed})
 
