@@ -30,7 +30,6 @@ export const action = async ({ request, params }) => {
 
 function Post() {
   const { post } = useLoaderData();
-  console.log(post)
   return (
     <div>
       <div className="page-header">

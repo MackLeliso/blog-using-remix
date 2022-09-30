@@ -14,6 +14,7 @@ export const loader = async () => {
 
 function PostItems() {
   const { posts } = useLoaderData();
+  console.log("data", posts);
   return (
     <>
       <div className="page-header">
@@ -23,7 +24,7 @@ function PostItems() {
         </Link>
       </div>
       <ul className="posts-list">
-        {posts === null? (posts.map((post) => (
+        {posts? (posts.map((post) => (
           <li key={post.id}>
             <Link to={post.id}>
               <h3>{post.title}</h3>

@@ -5,10 +5,8 @@ const prisma = new PrismaClient();
 
 export const action = async ({ request }) => {
   const form = await request.formData();
-  const title = form.get("title");
-  const body = form.get("body");
-  const filed = {title, body}
-  const post =  await prisma.post.create({data: filed})
+  const data = Object.fromEntries(form)
+  const post =  await prisma.post.create({data: data})
 
 // todo - submit to database 
   return redirect(`/posts/${post.id}`)
